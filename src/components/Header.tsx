@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Link, useLocation, useNavigate } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
 import { LogOut, Menu, Search, ShoppingCart, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
@@ -23,7 +23,7 @@ function SearchForm({ className }: { className?: string }) {
       to: "/", 
       search: term ? { q: term } : undefined, 
       hash: "mercado" 
-    } as any); // O 'as any' evita erros caso a rota '/' ainda não tenha tipagem de search
+    } as any);
   };
 
   return (
@@ -62,7 +62,6 @@ function CartLink() {
 export function Header() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleLogout = async () => {
